@@ -1,0 +1,15 @@
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/bin/Debug/net7.0/CouponsApp
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/bin/Debug/net7.0/CouponsApp.deps.json
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/bin/Debug/net7.0/CouponsApp.runtimeconfig.json
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/bin/Debug/net7.0/CouponsApp.dll
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/bin/Debug/net7.0/CouponsApp.pdb
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/obj/Debug/net7.0/CouponsApp.csproj.AssemblyReference.cache
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/obj/Debug/net7.0/CouponsApp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/obj/Debug/net7.0/CouponsApp.AssemblyInfoInputs.cache
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/obj/Debug/net7.0/CouponsApp.AssemblyInfo.cs
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/obj/Debug/net7.0/CouponsApp.csproj.CoreCompileInputs.cache
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/obj/Debug/net7.0/CouponsApp.dll
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/obj/Debug/net7.0/refint/CouponsApp.dll
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/obj/Debug/net7.0/CouponsApp.pdb
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/obj/Debug/net7.0/CouponsApp.genruntimeconfig.cache
+/Users/sbeauvais/Desktop/truData/truData_Projects/CouponsApp/obj/Debug/net7.0/ref/CouponsApp.dll
