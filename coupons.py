@@ -39,20 +39,24 @@ def main():
             print(f'{usr_in} is in stock')
             shopping_list.append(usr_in)
             
+            
 
         # if the user is done we will add the total
         elif usr_in == "done":
-            print('Items added to the basket.')  
-
+            print('Items added to the basket.') 
+            for i in range(len(shopping_list)):
+                item_lookup = shopping_list[i]
+                
+                # getting price of each item
+                shopping_total.append(items_df[items_df['item_name']==item_lookup]['price'].values[0])
+            print(sum(shopping_total))
 
         # if the item does not exist
         else:
             print('Sorry, we do not carry that item.')
-            #shopping_list.append(usr_in)
 
-    # last value is always done so remove that
-    for x in range(len(shopping_list)-1):
-        print(shopping_list[x])
+    #for x in range(len(shopping_list)):
+    #    print(shopping_list[x])
 
 if __name__ == "__main__":
     sys.exit(main())
