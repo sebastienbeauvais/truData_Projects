@@ -12,8 +12,8 @@ def main():
 
     # availble items
     items = {
-        'item_name':['Milk', 'Bread', 'Eggs', 'Butter', 'Coffee'], 
-        'price':[3.99, 2.99, 5.99, 1.99, 1.50]
+        'item_name':['Milk', 'Bread', 'Eggs', 'Butter', 'Coffee', 'Creamer', 'Chicken', 'Pie'], 
+        'price':[3.99, 2.99, 5.99, 1.99, 1.50, 0.65, 12.00, 10.00, ]
     }
     
     # loading into dataframe
@@ -34,12 +34,11 @@ def main():
     # getting users list of items
     while usr_in != "done":
         usr_in = input('Please enter an item: ')
+
         # check if any strings match user input
         if items_df.item_name.str.contains(usr_in).any():
             print(f'{usr_in} was added to the basket.')
             shopping_list.append(usr_in)
-            
-            
 
         # if the user is done we will add the total
         elif usr_in == "done":
@@ -49,6 +48,8 @@ def main():
                 
                 # getting price of each item
                 shopping_total.append(items_df[items_df['item_name']==item_lookup]['price'].values[0])
+            
+            print(f'Your current total is {sum(shopping_total)}')
             shopping_total = sum(shopping_total)
 
         # if the item does not exist
@@ -65,17 +66,22 @@ def main():
 
         # Reformat for overall discounts
         if coupons_df.coupon_name.str.contains(coupon_in).any():
-            print(f'Applying {coupon_in} to your cart.')
+            print(f'Applying {coupon_in} discount to your cart.')
             discount = coupons_df[coupons_df['coupon_name']==coupon_in]['discount'].values[0]
             disc_total = shopping_total*(1-discount)
             print(f'Your new total is: {disc_total}')
 
         # create elif for BOGO
-        
+
         else:
             print('Sorry, that does not match any of the available coupons.')
+
     elif coupon_yn == 'N':
         print(f'Your total is: {shopping_total}')
+
+    else:
+        print('Response not found.')
+        print(f'Your total is {shopping_total}')
     
     # create case to loop back for correct input if user inputs wrong answer
 if __name__ == "__main__":
