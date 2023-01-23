@@ -1,7 +1,8 @@
 import sys
-
 import pandas as pd
 import numpy as np
+
+from collections import Counter
 
 def main():
 
@@ -15,9 +16,6 @@ def main():
         'item_name':['Milk', 'Bread', 'Eggs', 'Butter', 'Coffee', 'Creamer', 'Chicken', 'Pie'], 
         'price':[3.99, 2.99, 5.99, 1.99, 1.50, 0.65, 12.00, 10.00, ]
     }
-    
-    # loading into dataframe
-    items_df = pd.DataFrame(data=items)
 
     # available coupons
     coupons = {
@@ -26,6 +24,7 @@ def main():
     }
 
     # loading into dataframe
+    items_df = pd.DataFrame(data=items)
     coupons_df = pd.DataFrame(data=coupons)
 
     # showing customer list of items available
@@ -37,27 +36,27 @@ def main():
 
         # check if any strings match user input
         if items_df.item_name.str.contains(usr_in).any():
-            print(f'{usr_in} was added to the basket.')
+            print(f'{usr_in} was added to the basket.\n')
             shopping_list.append(usr_in)
 
         # if the user is done we will add the total
         elif usr_in == "done":
-            print('Items added to the basket.') 
+            print('All items have been added to the basket.') 
             for i in range(len(shopping_list)):
                 item_lookup = shopping_list[i]
                 
                 # getting price of each item
                 shopping_total.append(items_df[items_df['item_name']==item_lookup]['price'].values[0])
             
-            print(f'Your current total is {sum(shopping_total)}')
+            print(f'Your current total is {sum(shopping_total)}\n')
             shopping_total = sum(shopping_total)
 
         # if the item does not exist
         else:
-            print('Sorry, we do not carry that item.')
-
+            print('Sorry, we do not carry that item.\n')
+    
     # prompt user if they want to use a coupon
-    coupon_yn = input('Would you like to use a coupon (Y/N):')
+    coupon_yn = input('Would you like to use a coupon (Y/N)?: ')
 
     if coupon_yn == 'Y':
         # showing customer list of coupons available
@@ -65,23 +64,30 @@ def main():
         coupon_in = input('Please select a coupon: ')
 
         # Reformat for overall discounts
-        if coupons_df.coupon_name.str.contains(coupon_in).any():
+        if coupons_df.coupon_name.str.contains(coupon_in).any() and coupon_in != 'BOGO':
             print(f'Applying {coupon_in} discount to your cart.')
             discount = coupons_df[coupons_df['coupon_name']==coupon_in]['discount'].values[0]
             disc_total = shopping_total*(1-discount)
-            print(f'Your new total is: {disc_total}')
+            print(f'Your new total is: {disc_total:.2f}')
 
-        # create elif for BOGO
+        elif coupon_in == 'BOGO':
+            for item in shopping_list:
+            
+                    
+            
+            #if Counter(shopping_list).values()%2==0:
+
+
 
         else:
             print('Sorry, that does not match any of the available coupons.')
 
     elif coupon_yn == 'N':
-        print(f'Your total is: {shopping_total}')
+        print(f'Your total is: {shopping_total:.2f}')
 
     else:
         print('Response not found.')
-        print(f'Your total is {shopping_total}')
+        print(f'Your total is {shopping_total:.2f}')
     
     # create case to loop back for correct input if user inputs wrong answer
 if __name__ == "__main__":
