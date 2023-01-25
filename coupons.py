@@ -1,10 +1,17 @@
 import sys
 import pandas as pd
-import numpy as np
 
-from collections import Counter
+# from collections import Counter
+
 
 def main():
+
+    receipt_df = pd.DataFrame(
+        columns = [
+            'item_name',
+            'item_price',
+        ]
+    )
 
     # declaring variables
     shopping_list = []
@@ -48,12 +55,21 @@ def main():
                 # getting price of each item
                 shopping_total.append(items_df[items_df['item_name']==item_lookup]['price'].values[0])
             
+            # adding shopping list and fields to df
+            receipt_df['item_name'] = shopping_list
+            receipt_df['item_price'] = shopping_total
+
             print(f'Your current total is {sum(shopping_total)}\n')
             shopping_total = sum(shopping_total)
 
         # if the item does not exist
         else:
             print('Sorry, we do not carry that item.\n')
+
+    receipt_df = receipt_df \
+        .groupby(['item_name', 'item_price']) \
+        .value_counts().reset_index(name='quantity')
+    print(receipt_df)
     
     # prompt user if they want to use a coupon
     coupon_yn = input('Would you like to use a coupon (Y/N)?: ')
@@ -72,13 +88,8 @@ def main():
 
         elif coupon_in == 'BOGO':
             for item in shopping_list:
-            
-                    
-            
-            #if Counter(shopping_list).values()%2==0:
-
-
-
+                print(item)
+        
         else:
             print('Sorry, that does not match any of the available coupons.')
 
@@ -92,5 +103,4 @@ def main():
     # create case to loop back for correct input if user inputs wrong answer
 if __name__ == "__main__":
     sys.exit(main())
-
 
