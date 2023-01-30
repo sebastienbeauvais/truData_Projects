@@ -1,8 +1,6 @@
 import sys
 import pandas as pd
 
-# from collections import Counter
-
 
 def main():
 
@@ -86,13 +84,21 @@ def main():
             disc_total = shopping_total*(1-discount)
             print(f'Your new total is: {disc_total:.2f}')
 
+        # logic for BOGO discount
         elif coupon_in == 'BOGO':
-            for item in shopping_list:
-                print(item)
+            df1 = receipt_df[receipt_df['quantity']<2].copy()
+            df2 = receipt_df[receipt_df['quantity']>1].copy()
+            df2['item_price'] = df2['item_price'].apply(lambda x: x*0.5)
+            frames = [df1, df2]
+            disc_total_df = pd.concat(frames)
+            disc_total = sum(disc_total_df['item_price'])
+            print(f'Your new total is: {disc_total:.2f}')
         
+        # invalid coupon name
         else:
             print('Sorry, that does not match any of the available coupons.')
 
+    # No coupon used
     elif coupon_yn == 'N':
         print(f'Your total is: {shopping_total:.2f}')
 
