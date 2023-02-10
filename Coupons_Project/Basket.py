@@ -5,8 +5,4 @@ class Basket:
 
     def view_basket(self):
         for k, v in self.dictionary.items():
-            print(k, v)
-
-
-    
-        
+            print(f'{k}\t{v}')
