@@ -1,8 +1,12 @@
 class Basket:
     
-    def __init__(self):
-        self.items = []
-        
+    def __init__(self, dictionary):
+        self.dictionary = dict(dictionary)
 
-    def add_item(self, item: str):
-        "function to add an item to you shopping list"
+    def view_basket(self):
+        for k, v in self.dictionary.items():
+            print(k, v)
+
+
+    
+        

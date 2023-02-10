@@ -1,5 +1,11 @@
 class Coupon:
     
-    def __init__(self, coupon_name, coupon_discount):
-        self.coupon_name = coupon_name
-        self.coupon_discount = coupon_discount
+    def __init__(self, dictionary):
+        self.dictionary = dict(dictionary)
+
+    def view_coupons(self):
+        for k, v in self.dictionary.items():
+            print(k, v)
+
+
+
