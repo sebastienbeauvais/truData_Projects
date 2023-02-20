@@ -43,53 +43,25 @@ namespace ArchitectureProgram
             shoppingCartDict.Add("Pie", 1);
 
 
-            /*
-            // creating a coupon object
-            Coupon coupon = new Coupon();
-            coupon.Name = "10% off";
-            coupon.Discount = 0.1f;
-
-            // creating the store inventory
-            Inventory inventory = new Inventory();
-            inventory.Item = "Milk";
-            inventory.Price = 3.99f;
-
-            inventory.Item = "Bread";
-            inventory.Price = 2.50f;
-
-            inventory.Item = "Eggs";
-            inventory.Price = 4.00f;
-
-            inventory.Item = "Coffee";
-            inventory.Price = 2.00f;
-
-            inventory.Item = "Creamer";
-            inventory.Price = 0.50f;
-
-            inventory.Item = "Pie";
-            inventory.Price = 10.00f;
-
-
-            // creating the shopping cart
-            ShoppingCart cart = new ShoppingCart();
-            cart.ItemName = "Milk";
-            cart.Quantity = 2;
-            
-            cart.ItemName = "Bread";
-            cart.Quantity = 1;
-
-            cart.ItemName = "Eggs";
-            cart.Quantity = 3;
-
-            cart.ItemName = "Pie";
-            cart.Quantity = 1;
-            */
-
             // creating inventory objects off dictionary
-            Inventory testInv = new Inventory();
+            Inventory inventory = new Inventory();
             foreach(string key in inventoryDict.Keys){
-                testInv.Item = key;
-                testInv.Price = inventoryDict[key];
+                inventory.Item = key;
+                inventory.Price = inventoryDict[key];
+            }
+
+            // creating shoppingcart objects off dictionary
+            ShoppingCart cart = new ShoppingCart();
+            foreach(string key in shoppingCartDict.Keys){
+                cart.ItemName = key;
+                cart.Quantity = shoppingCartDict[key];
+            }
+
+            // creating coupon objects off dictionary
+            Coupon coupon = new Coupon();
+            foreach(string key in couponDict.Keys){
+                coupon.Name = key;
+                coupon.Discount = couponDict[key];
             }
 
             // Printing hashtable of items
