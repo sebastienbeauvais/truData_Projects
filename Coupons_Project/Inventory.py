@@ -1,8 +1,12 @@
 class Inventory:
                                                                                                                              
-    def __init__(self, dictionary):
-        self.dictionary = dict(dictionary)
+    def __init__(self, inventoryList):
+        self.inventoryList = dict(inventoryList)
 
     def view_inventory(self):
-        for k, v in self.dictionary.items():
-            print(f'{k}\t{v}')
+        for k, v in self.inventoryList.items():
+            print(k, v)
+
+
+
+

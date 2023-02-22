@@ -54,10 +54,10 @@ def main():
 
     # getting total
     total = 0
-    for key1 in basket1.dictionary:
-        for key2 in inventory1.dictionary:
+    for key1 in basket1.cartList:
+        for key2 in inventory1.inventoryList:
             if key1 == key2:
-                total += inventory1.dictionary[key1]
+                total += inventory1.inventoryList[key1]
     
     # showing basket and total
     while True:
@@ -65,10 +65,10 @@ def main():
         if usr_in == 'y':
             # pre-defined basket
             print('ITEM NAME\tPRICE\t\tQTY')
-            for key1 in basket1.dictionary:
-                for key2 in inventory1.dictionary:
+            for key1 in basket1.cartList:
+                for key2 in inventory1.inventoryList:
                     if key1 == key2:
-                        print(f'{key1}\t\t{inventory1.dictionary[key1]}\t\t{basket1.dictionary[key1]}')
+                        print(f'{key1}\t\t{inventory1.inventoryList[key1]}\t\t{basket1.cartList[key1]}')
             print(f'Your current total is: ${total}')
             break
 
@@ -80,6 +80,27 @@ def main():
             print('Sorry, we did not recognize that command.')
             continue
 
+    while True:
+        usr_in = input('Would you like to add or remove an item (a/r/n)?: ')
+        # 'a' is for adding item
+        if usr_in == 'a':
+            usr_in1 = input('Please type the item you\'d like to add: ')
+            usr_in2 = input(f'How many {usr_in1}\'s would you like?: ')
+            if usr_in not in inventory1.inventoryList:
+                print('Sorry, we dont carry that item')
+            else:
+                basket1 = basket1.add_item(usr_in1, usr_in2)
+        # 'r' is for removing an item
+        elif usr_in == 'r':
+            pass
+        # 'n' is a happy customer
+        elif usr_in == 'n':
+            pass
+        # no command found
+        else:
+            print('Sorry, we did not recognize that command.')
+
+
     # applyin coupon
     while True:
         usr_in = input('Would you like to use a coupon (y/n)?: ')
@@ -87,9 +108,9 @@ def main():
             print('COUPON NAME\t\tDISCOUNT')
             Coupon.view_coupons(coupon1)
             cpn_in = input('Enter the coupon you would like to use: ')
-            for key1 in coupon1.dictionary:
+            for key1 in coupon1.couponList:
                 if cpn_in == key1:
-                    disc = coupon1.dictionary[key1]
+                    disc = coupon1.couponList[key1]
                     new_total = total*(1-disc)
                     print(f'Your new total: ${new_total}')
                 else:
