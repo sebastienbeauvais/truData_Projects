@@ -1,11 +1,8 @@
 class Coupon:
     
-    def __init__(self, couponList):
-        self.couponList = dict(couponList)
+    def __init__(self, coupon_name, discount):
+        self.coupon_name = coupon_name
+        self.discount = discount
 
-    def view_coupons(self):
-        for k, v in self.couponList.items():
-            print(k, v)
-
-
-
+    def apply_coupon(self, total):
+        return round(total*(1-self.discount), 2)
