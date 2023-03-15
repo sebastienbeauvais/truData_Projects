@@ -10,7 +10,7 @@ def reciept(inventory, basket):
         for basket_item in basket:
             if inv_item[0] == basket_item[0]:
                 total_price += inv_item[1]*basket_item[1]
-    print(f'Your total is: ${total_price}')
+    return total_price
 
 def main():
     # creating an inventory list to pass into the inventory class
@@ -55,8 +55,12 @@ def main():
     basket1.view_basket()
 
     # getting total price
-    reciept(inventory1.inventory_list, basket1.shopping_list)
+    total_price = reciept(inventory1.inventory_list, basket1.shopping_list)
 
+    print(f'Your total is: ${total_price}')
+
+    disc_total = coupon1.apply_coupon(total_price)
+    print(f'Your total with discount {coupon1.coupon_name} applied is: ${disc_total}')
 
 
 if __name__ == '__main__':
